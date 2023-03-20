@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# 鯖ゲー
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 遊び方
 
-## Available Scripts
+制限時間内に、表示された10x10のグリッドに表示された5つの「鯖」を見つけ出すゲームです。
 
-In the project directory, you can run:
+制限時間は30秒で、グリッドにはランダムに配置された「鮭」以外の19種類の魚が表示されます。クリックしたセルに「鯖」があれば、その鯖は消えて、クリアした「鯖」の数が表示されます。
 
-### `npm start`
+制限時間内に「鯖」を5つクリアできればゲームクリアです。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 操作方法
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- START!ボタンをクリックしてゲームを開始します。
+- 10x10のグリッドが表示されます。
+- 表示されたグリッドから「鯖」を探してクリックします。
+- 制限時間内に「鯖」を5つクリアできればゲームクリアです。
+- ゲームクリアまたは制限時間が過ぎると、モーダルが表示されます。RETRYボタンで再度プレイできます。
 
-### `npm test`
+## エンジニア向け情報
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 技術スタック
 
-### `npm run build`
+- React
+- CSS
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 開発環境
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Node.js v16.0.0
+- npm v7.10.0
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### インストール方法
 
-### `npm run eject`
+# リポジトリをクローン
+git clone https://github.com/hirayama1987/saba-game.git
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# ディレクトリに移動
+cd saba-game
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# 依存関係のインストール
+npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# アプリケーションの起動
+npm start
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# アプリケーションのビルド
+npm run build
