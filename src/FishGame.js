@@ -1,21 +1,50 @@
 // src/FishGame.js
 import React, { useState, useEffect, useRef } from 'react';
-import Modal from "react-modal";
-import "./FishGame.css";
+import Modal from 'react-modal';
+import './FishGame.css';
 
-const fishChars = [  "鮭", "鮫", "鯵", "鰹", "鰤", "鱈", "鰻", "鰯", "鱒",  "鮪", "鯛", "鰌", "鯱", "鯰", "鯡", "鰕", "鰆", "鰈", "鱧",  "鮒", "鮟", "鰺", "鰥", "鯔", "鱚", "鰍", "鮴", "鰭",  "鯖", "鰍", "鮎", "鯊", "鰻", "鱸", "鱶", "鰰", "鮑", "鰆", "鱵"];
+const fishChars = [
+  ['鮭', 'さけ'],
+  ['鮫', 'さめ'],
+  ['鯵', 'あじ'],
+  ['鰹', 'かつお'],
+  ['鰤', 'ぶり'],
+  ['鱈', 'たら'],
+  ['鰻', 'うなぎ'],
+  ['鰯', 'いわし'],
+  ['鱒', 'ます'],
+  ['鮪', 'まぐろ'],
+  ['鯛', 'たい'],
+  ['鰌', 'どじょう'],
+  ['鯱', 'しゃちほこ'],
+  ['鯰', 'なまず'],
+  ['鯡', 'にしん'],
+  ['鰕', 'えび'],
+  ['鰆', 'さわら'],
+  ['鰈', 'かれい'],
+  ['鱧', 'はも'],
+  ['鮒', 'ふな'],
+  ['鮟', 'あんこう'],
+  ['鰺', 'あじ'],
+  ['鰥', 'おとこだな'],
+  ['鯔', 'こい'],
+  ['鱚', 'こはだ'],
+  ['鰍', 'かじか'],
+  ['鮴', 'うぐい'],
+  ['鰭', 'せぐろ']
+];
 
 const totalMackerels = 5;
 const gameTime = 30;
 
-Modal.setAppElement("#root");
+Modal.setAppElement('#root');
 
 const FishGame = () => {
   const [started, setStarted] = useState(false);
   const [fishGrid, setFishGrid] = useState([]);
   const [timer, setTimer] = useState(gameTime);
   const [mackerelsClicked, setMackerelsClicked] = useState(0);
-  const [modalText, setModalText] = useState("");
+  const [modalText, setModalText] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const timerInterval = useRef(null);
 
@@ -25,23 +54,22 @@ const FishGame = () => {
       return () => clearTimeout(timerId);
     }
     if (started && timer === 0) {
-      setModalText("GAME OVER");
+      setModalText('GAME OVER');
       setIsModalOpen(true);
     }
   }, [started, timer]);
 
   useEffect(() => {
-    if (timer === 0 || mackerelsClicked === 5) {
+    if (timer === 0 || mackerelsClicked === totalMackerels) {
       clearInterval(timerInterval.current);
-      if (mackerelsClicked === 5) {
-        setModalText("CLEAR");
+      if (mackerelsClicked === totalMackerels) {
+        setModalText('CLEAR');
       } else {
-        setModalText("GAME OVER");
+        setModalText('GAME OVER');
       }
       setIsModalOpen(true);
     }
   }, [timer, mackerelsClicked]);
-  
 
   const generateFishGrid = () => {
     const grid = [];
@@ -51,7 +79,7 @@ const FishGame = () => {
     while (mackerelsPlaced < totalMackerels) {
       const index = Math.floor(Math.random() * gridSize);
       if (grid[index] === undefined) {
-        grid[index] = "鯖";
+        grid[index] = '鯖';
         mackerelsPlaced++;
       }
     }
@@ -59,7 +87,7 @@ const FishGame = () => {
     for (let i = 0; i < gridSize; i++) {
       if (grid[i] === undefined) {
         const randomFish = fishChars[Math.floor(Math.random() * fishChars.length)];
-        grid[i] = randomFish;
+        grid[i] = randomFish[0];
       }
     }
 
@@ -79,14 +107,15 @@ const FishGame = () => {
   };
 
   const handleFishClick = (index) => {
-    if (fishGrid[index] === "鯖") {
+    if (fishGrid[index] === '鯖') {
       const newFishGrid = [...fishGrid];
-      newFishGrid[index] = "";
+      newFishGrid[index] = '';
       setFishGrid(newFishGrid);
       setMackerelsClicked(mackerelsClicked + 1);
+    } else {
+      alert(`読み方: ${fishChars.find(fish => fish[0] === fishGrid[index])[1]}`);
     }
   };
-  
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -98,10 +127,11 @@ const FishGame = () => {
   };
 
   const shareOnTwitter = () => {
-    const text = modalText === "CLEAR" ? "I just cleared" : "I couldn't clear";
+    const text = modalText === 'CLEAR' ? 'I just cleared' : 'I couldn\'t clear';
     const url = encodeURIComponent(`${text} the Mackerel Game! 🐟 #鯖ゲー`);
     window.open(`https://twitter.com/intent/tweet?text=${url}`);
   };
+
   return (
     <div className="fish-game">
       {!started ? (
@@ -119,10 +149,10 @@ const FishGame = () => {
               <button
                 key={index}
                 className="fish-cell"
-                disabled={fish === "" || timer === 0}
+                disabled={fish === '' || timer === 0}
                 onClick={() => handleFishClick(index)}
               >
-                {fish}
+                <span className="fish-text">{fish}</span>
               </button>
             ))}
           </div>
@@ -148,3 +178,4 @@ const FishGame = () => {
 };
 
 export default FishGame;
+
