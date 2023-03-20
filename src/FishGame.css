@@ -88,3 +88,24 @@
 .share-btn:hover {
   background-color: #45a049;
 }
+
+.timer-bar {
+  height: 20px;
+  width: 100%;
+  background-color: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.timer-bar::-webkit-progress-bar {
+  background-color: #eee;
+}
+
+.timer-bar::-webkit-progress-value {
+  background-color: #4caf50;
+}
+
+.timer-bar::-moz-progress-bar {
+  background-color: #4caf50;
+}

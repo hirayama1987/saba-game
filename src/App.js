@@ -1,9 +1,18 @@
 // App.js
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import FishGame from "./FishGame";
 
 function App() {
+  useEffect(() => {
+    function handleKeyDown(event) {
+      if (event.key === "f" && event.metaKey) {
+        alert("チートはダメですよ！");
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
   return (
     <div className="app">
       <h1 className="title">鯖ゲー</h1>

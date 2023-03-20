@@ -140,10 +140,19 @@ const FishGame = () => {
         </button>
       ) : (
         <>
+          {/* プログレスバー */}
+          {started && timer > 0 && (
+            <progress
+              className="timer-bar"
+              max={gameTime}
+              value={gameTime - timer}
+            />
+          )}
           <div className="status-bar">
             <div className="mackerels-clicked">Clicked: {mackerelsClicked}</div>
             <div className="timer">Time: {timer}s</div>
           </div>
+
           <div className="fish-grid">
             {fishGrid.map((fish, index) => (
               <button
