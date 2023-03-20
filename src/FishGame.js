@@ -3,12 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Modal from "react-modal";
 import "./FishGame.css";
 
-const fishChars = [
-  "鮭", "鮫", "鯵", "鰹", "鰤", "鱈", "鰻", "鰯", "鱒",
-  "鮪", "鯛", "鰌", "鯱", "鯰", "鯡", "鰕", "鰆", "鰈", "鱧",
-  "鮒", "鮟", "鰺", "鰥", "鯔", "鱚", "鰍", "鮴", "鰭"
-];
-
+const fishChars = [  "鮭", "鮫", "鯵", "鰹", "鰤", "鱈", "鰻", "鰯", "鱒",  "鮪", "鯛", "鰌", "鯱", "鯰", "鯡", "鰕", "鰆", "鰈", "鱧",  "鮒", "鮟", "鰺", "鰥", "鯔", "鱚", "鰍", "鮴", "鰭",  "鯖", "鰍", "鮎", "鯊", "鰻", "鱸", "鱶", "鰰", "鮑", "鰆", "鱵"];
 
 const totalMackerels = 5;
 const gameTime = 30;
