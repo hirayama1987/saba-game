@@ -128,7 +128,7 @@ const FishGame = () => {
 
   const shareOnTwitter = () => {
     const text = modalText === 'CLEAR' ? 'I just cleared' : 'I couldn\'t clear';
-    const url = encodeURIComponent(`${text} the Mackerel Game! 🐟 #鯖ゲー`);
+    const url = encodeURIComponent(`${text} the Mackerel Game! https://saba-game.vercel.app/ 🐟 #鯖ゲー`);
     window.open(`https://twitter.com/intent/tweet?text=${url}`);
   };
 
